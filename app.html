@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Physical Center</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">
+        <img src="logo.png" alt="Academia Physical Center" />
+      </div>
+      <div class="brand-text">
+        <h1>Physical Center</h1>
+        <p>Sistema do aluno • Treino • Progresso • Check-in</p>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <button class="btn ghost" id="btnTheme" title="Alternar tema">Tema</button>
+      <button class="btn danger hide" id="btnLogout">Sair</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- AUTH -->
+    <section class="panel auth" id="authPanel">
+      <div class="auth-grid">
+        <div class="card glass">
+          <!-- LOGO NO LOGIN -->
+          <div class="login-logo">
+            <img src="logo.png" alt="Physical Center" />
+          </div>
+
+          <h2>Entrar</h2>
+          <p class="muted">Acesse sua conta para ver treinos e progresso.</p>
+
+          <form id="loginForm" class="form">
+            <div class="field">
+              <label for="loginEmail">E-mail</label>
+              <input id="loginEmail" type="email" placeholder="voce@email.com" required />
+            </div>
+            <div class="field">
+              <label for="loginPass">Senha</label>
+              <input id="loginPass" type="password" placeholder="••••••••" minlength="6" required />
+            </div>
+
+            <button class="btn primary" type="submit">Entrar</button>
+            <p class="hint">
+              Dica: você pode criar uma conta no cadastro ao lado.
+            </p>
+          </form>
+        </div>
+
+        <div class="card glass">
+          <!-- LOGO NO CADASTRO -->
+          <div class="login-logo">
+            <img src="logo.png" alt="Physical Center" />
+          </div>
+
+          <h2>Criar conta</h2>
+          <p class="muted">Leva menos de 1 minuto. Seus dados ficam no seu navegador.</p>
+
+          <form id="registerForm" class="form">
+            <div class="field">
+              <label for="regName">Nome</label>
+              <input id="regName" type="text" placeholder="Seu nome" minlength="2" required />
+            </div>
+
+            <div class="field two">
+              <div>
+                <label for="regEmail">E-mail</label>
+                <input id="regEmail" type="email" placeholder="voce@email.com" required />
+              </div>
+              <div>
+                <label for="regPass">Senha</label>
+                <input id="regPass" type="password" placeholder="mín. 6" minlength="6" required />
+              </div>
+            </div>
+
+            <div class="field two">
+              <div>
+                <label for="regGoal">Objetivo</label>
+                <select id="regGoal" required>
+                  <option value="Hipertrofia">Hipertrofia</option>
+                  <option value="Emagrecimento">Emagrecimento</option>
+                  <option value="Condicionamento">Condicionamento</option>
+                  <option value="Saúde">Saúde</option>
+                </select>
+              </div>
+              <div>
+                <label for="regLevel">Nível</label>
+                <select id="regLevel" required>
+                  <option value="Iniciante">Iniciante</option>
+                  <option value="Intermediário">Intermediário</option>
+                  <option value="Avançado">Avançado</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="btn primary" type="submit">Cadastrar</button>
+            <p class="hint">
+              Ao cadastrar, você recebe um treino inicial pronto (editável).
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- APP -->
+    <section class="panel app hide" id="appPanel">
+      <aside class="sidebar glass">
+        <div class="profile">
+          <!-- LOGO NA SIDEBAR -->
+          <div class="avatar" id="avatar">
+            <img src="logo.png" alt="Physical Center">
+          </div>
+
+          <div>
+            <div class="profile-name" id="userName">Aluno</div>
+            <div class="profile-meta" id="userMeta">Objetivo • Nível</div>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active" data-view="dashboard">Dashboard</button>
+          <button class="nav-item" data-view="workout">Treinos</button>
+          <button class="nav-item" data-view="progress">Progresso</button>
+          <button class="nav-item" data-view="schedule">Agenda</button>
+          <button class="nav-item" data-view="plan">Plano</button>
+          <button class="nav-item" data-view="settings">Config</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="tiny muted">Dados salvos no seu navegador (localStorage).</div>
+        </div>
+      </aside>
+
+      <section class="content">
+        <!-- DASHBOARD -->
+        <div class="view" id="view-dashboard">
+          <div class="grid-hero">
+            <div class="card glass hero">
+              <div class="hero-top">
+                <div>
+                  <h2>Bem-vindo(a), <span id="helloName">Aluno</span> 👊</h2>
+                  <p class="muted">Seu painel do Physical Center com tudo organizado.</p>
+                </div>
+                <button class="btn primary" id="btnCheckin">Fazer check-in</button>
+              </div>
+
+              <div class="kpis">
+                <div class="kpi">
+                  <div class="kpi-title">Check-ins (30d)</div>
+                  <div class="kpi-value" id="kpiCheckins">0</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-title">Treinos cadastrados</div>
+                  <div class="kpi-value" id="kpiWorkouts">0</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-title">Peso atual</div>
+                  <div class="kpi-value"><span id="kpiWeight">—</span> <span class="kpi-unit">kg</span></div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-title">Próximo</div>
+                  <div class="kpi-value" id="kpiNext">—</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card glass quick">
+              <h3>Ações rápidas</h3>
+              <div class="quick-actions">
+                <button class="btn" id="btnAddWorkout">+ Novo treino</button>
+                <button class="btn" id="btnAddMeasure">+ Medida</button>
+                <button class="btn" id="btnAddEvent">+ Evento</button>
+              </div>
+              <div class="divider"></div>
+              <h3>Últimos check-ins</h3>
+              <ul class="list" id="lastCheckins"></ul>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card glass">
+              <div class="card-head">
+                <h3>Treino de hoje</h3>
+                <span class="pill" id="todayPill">Auto</span>
+              </div>
+              <div id="todayWorkout" class="empty muted">Cadastre treinos para aparecer aqui.</div>
+            </div>
+
+            <div class="card glass">
+              <div class="card-head">
+                <h3>Progresso (peso)</h3>
+                <span class="pill">Últimos 10 registros</span>
+              </div>
+              <canvas id="weightChart" height="120"></canvas>
+              <div class="tiny muted">Gráfico simples (Canvas).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WORKOUT -->
+        <div class="view hide" id="view-workout">
+          <div class="card glass">
+            <div class="card-head">
+              <h2>Treinos</h2>
+              <div class="row">
+                <button class="btn primary" id="btnNewWorkout">+ Criar treino</button>
+              </div>
+            </div>
+
+            <div class="workout-layout">
+              <div class="workout-list">
+                <div class="search">
+                  <input id="workoutSearch" placeholder="Buscar treino (ex: Peito, Fullbody)" />
+                </div>
+                <ul class="list" id="workoutList"></ul>
+              </div>
+
+              <div class="workout-editor">
+                <div class="empty muted" id="workoutEmpty">
+                  Selecione um treino para editar ou crie um novo.
+                </div>
+
+                <form class="form hide" id="workoutForm">
+                  <input type="hidden" id="workoutId" />
+                  <div class="field two">
+                    <div>
+                      <label for="workoutTitle">Nome do treino</label>
+                      <input id="workoutTitle" required placeholder="Ex: A • Peito e Tríceps" />
+                    </div>
+                    <div>
+                      <label for="workoutDay">Dia sugerido</label>
+                      <select id="workoutDay" required>
+                        <option value="Segunda">Segunda</option>
+                        <option value="Terça">Terça</option>
+                        <option value="Quarta">Quarta</option>
+                        <option value="Quinta">Quinta</option>
+                        <option value="Sexta">Sexta</option>
+                        <option value="Sábado">Sábado</option>
+                        <option value="Domingo">Domingo</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label>Exercícios</label>
+                    <div class="tiny muted">Clique em “Adicionar exercício”.</div>
+                    <div id="exercises"></div>
+                    <button type="button" class="btn" id="btnAddExercise">+ Adicionar exercício</button>
+                  </div>
+
+                  <div class="row space">
+                    <button class="btn primary" type="submit">Salvar</button>
+                    <button class="btn danger" type="button" id="btnDeleteWorkout">Excluir</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="view hide" id="view-progress">
+          <div class="grid-2">
+            <div class="card glass">
+              <div class="card-head">
+                <h2>Medidas</h2>
+                <button class="btn primary" id="btnNewMeasure">+ Registrar</button>
+              </div>
+
+              <form class="form hide" id="measureForm">
+                <div class="field two">
+                  <div>
+                    <label for="mDate">Data</label>
+                    <input id="mDate" type="date" required />
+                  </div>
+                  <div>
+                    <label for="mWeight">Peso (kg)</label>
+                    <input id="mWeight" type="number" step="0.1" min="1" required placeholder="Ex: 78.5"/>
+                  </div>
+                </div>
+
+                <div class="field two">
+                  <div>
+                    <label for="mChest">Peito (cm)</label>
+                    <input id="mChest" type="number" step="0.1" min="0" placeholder="Ex: 98"/>
+                  </div>
+                  <div>
+                    <label for="mWaist">Cintura (cm)</label>
+                    <input id="mWaist" type="number" step="0.1" min="0" placeholder="Ex: 84"/>
+                  </div>
+                </div>
+
+                <div class="field two">
+                  <div>
+                    <label for="mHip">Quadril (cm)</label>
+                    <input id="mHip" type="number" step="0.1" min="0" placeholder="Ex: 96"/>
+                  </div>
+                  <div>
+                    <label for="mArm">Braço (cm)</label>
+                    <input id="mArm" type="number" step="0.1" min="0" placeholder="Ex: 36"/>
+                  </div>
+                </div>
+
+                <div class="row space">
+                  <button class="btn primary" type="submit">Salvar medida</button>
+                  <button class="btn" type="button" id="btnCancelMeasure">Cancelar</button>
+                </div>
+              </form>
+
+              <div class="divider"></div>
+              <ul class="list" id="measureList"></ul>
+            </div>
+
+            <div class="card glass">
+              <div class="card-head">
+                <h2>Check-ins</h2>
+                <div class="pill">Marque presença com 1 clique</div>
+              </div>
+
+              <div class="row space">
+                <button class="btn primary" id="btnCheckin2">Fazer check-in agora</button>
+                <button class="btn danger" id="btnClearCheckins">Limpar</button>
+              </div>
+
+              <div class="divider"></div>
+              <ul class="list" id="checkinList"></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCHEDULE -->
+        <div class="view hide" id="view-schedule">
+          <div class="card glass">
+            <div class="card-head">
+              <h2>Agenda</h2>
+              <button class="btn primary" id="btnNewEvent">+ Novo evento</button>
+            </div>
+
+            <form class="form hide" id="eventForm">
+              <input type="hidden" id="eventId" />
+              <div class="field two">
+                <div>
+                  <label for="eDate">Data</label>
+                  <input id="eDate" type="date" required />
+                </div>
+                <div>
+                  <label for="eTime">Hora</label>
+                  <input id="eTime" type="time" required />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="eTitle">Título</label>
+                <input id="eTitle" required placeholder="Ex: Avaliação física, Treino com personal..." />
+              </div>
+
+              <div class="field">
+                <label for="eNote">Observação</label>
+                <textarea id="eNote" rows="3" placeholder="Ex: levar garrafa, alongar antes..."></textarea>
+              </div>
+
+              <div class="row space">
+                <button class="btn primary" type="submit">Salvar evento</button>
+                <button class="btn" type="button" id="btnCancelEvent">Cancelar</button>
+              </div>
+            </form>
+
+            <div class="divider"></div>
+            <ul class="list" id="eventList"></ul>
+          </div>
+        </div>
+
+        <!-- PLAN -->
+        <div class="view hide" id="view-plan">
+          <div class="grid-2">
+            <div class="card glass">
+              <div class="card-head">
+                <h2>Plano / Assinatura</h2>
+                <span class="pill" id="planPill">Ativo</span>
+              </div>
+
+              <div class="plan-box">
+                <div class="plan-title" id="planName">Plano Mensal</div>
+                <div class="muted" id="planDesc">Acesso total • Treinos • Avaliação • App</div>
+                <div class="plan-price"><span id="planPrice">R$ 129,90</span> <span class="muted">/mês</span></div>
+                <div class="divider"></div>
+
+                <div class="row space">
+                  <button class="btn primary" id="btnUpgrade">Trocar plano</button>
+                  <button class="btn danger" id="btnCancelPlan">Cancelar</button>
+                </div>
+
+                <p class="tiny muted">
+                  *Simulação local. Em produção, isso conectaria um gateway de pagamento.
+                </p>
+              </div>
+            </div>
+
+            <div class="card glass">
+              <div class="card-head">
+                <h2>Recomendações</h2>
+                <span class="pill">Personalizadas</span>
+              </div>
+              <ul class="tips" id="tipsList"></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div class="view hide" id="view-settings">
+          <div class="card glass">
+            <div class="card-head">
+              <h2>Configurações</h2>
+              <div class="pill">Seu perfil</div>
+            </div>
+
+            <form class="form" id="profileForm">
+              <div class="field two">
+                <div>
+                  <label for="pName">Nome</label>
+                  <input id="pName" required />
+                </div>
+                <div>
+                  <label for="pEmail">E-mail</label>
+                  <input id="pEmail" type="email" required />
+                </div>
+              </div>
+
+              <div class="field two">
+                <div>
+                  <label for="pGoal">Objetivo</label>
+                  <select id="pGoal">
+                    <option value="Hipertrofia">Hipertrofia</option>
+                    <option value="Emagrecimento">Emagrecimento</option>
+                    <option value="Condicionamento">Condicionamento</option>
+                    <option value="Saúde">Saúde</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="pLevel">Nível</label>
+                  <select id="pLevel">
+                    <option value="Iniciante">Iniciante</option>
+                    <option value="Intermediário">Intermediário</option>
+                    <option value="Avançado">Avançado</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row space">
+                <button class="btn primary" type="submit">Salvar perfil</button>
+                <button class="btn danger" type="button" id="btnResetAll">Resetar tudo</button>
+              </div>
+            </form>
+
+            <div class="divider"></div>
+            <p class="tiny muted">
+              Resetar tudo apaga dados do localStorage deste site.
+            </p>
+          </div>
+        </div>
+
+      </section>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
