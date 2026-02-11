@@ -1,181 +1,269 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Physical Center | Academia</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="container header-flex">
-    <div class="brand">
-      <div class="logo">
-        <img src="logo.png" alt="">
+<header class="top">
+  <div class="wrap top__row">
+    <a class="brand" href="index.html" aria-label="Physical Center">
+      <img class="brand__logo" src="./logo.png" alt="Physical Center">
+      <div class="brand__text">
+        <strong>Academia Physical Center</strong>
       </div>
-      <strong>Academia Physical Center</strong>
-    </div>
+    </a>
 
-    <nav class="site-nav">
+    <nav class="menu">
       <a href="#sobre">Sobre</a>
+      <a href="#estrutura">Estrutura</a>
       <a href="#planos">Planos</a>
       <a href="#contato">Contato</a>
-      <a href="app.html" class="btn primary">Área do Aluno</a>
+      <a class="btn btn--primary" href="app.html">Área do Aluno</a>
     </nav>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero-site">
-  <div class="container hero-grid">
-    <div class="hero-left">
-      <span class="hero-badge">🔥 Treinos + Acompanhamento + App do Aluno</span>
-      <h1>Transforme seu corpo<br>no Physical Center</h1>
-      <p>
-        Estrutura moderna, profissionais qualificados e um sistema exclusivo
-        para acompanhar seu treino, check-in e evolução.
-      </p>
+<main>
+  <section class="hero2">
+    <div class="wrap hero2__grid">
+      <div class="hero2__left">
+        <div class="pill">⚡ Treine melhor • Acompanhe sua evolução</div>
+        <h1>Uma academia moderna<br>com portal do aluno</h1>
+        <p>
+          Check-in, treinos, agenda e progresso (peso) em um sistema simples e profissional.
+        </p>
 
-      <div class="hero-actions">
-        <a href="#planos" class="btn primary">Ver planos</a>
-        <a href="app.html" class="btn">Entrar / Cadastrar</a>
-      </div>
+        <div class="hero2__actions">
+          <button class="btn btn--primary" id="btnOpenPlans">Contratar plano</button>
+          <a class="btn" href="app.html">Entrar / Cadastrar</a>
+        </div>
 
-      <div class="hero-stats">
-        <div class="stat">
-          <strong>+100</strong>
-          <span>Alunos ativos</span>
-        </div>
-        <div class="stat">
-          <strong>7 dias</strong>
-          <span>Semana completa</span>
-        </div>
-        <div class="stat">
-          <strong>App</strong>
-          <span>Progresso e treinos</span>
+        <div class="stats">
+          <div class="stat"><strong>+120</strong><span>alunos ativos</span></div>
+          <div class="stat"><strong>7 dias</strong><span>semana completa</span></div>
+          <div class="stat"><strong>Portal</strong><span>treino + agenda</span></div>
         </div>
       </div>
-    </div>
 
-    <div class="hero-right">
-      <div class="hero-card">
-        <div class="hero-card-title">Seu plano inclui</div>
-        <ul class="hero-list">
-          <li>✅ Acesso total à academia</li>
-          <li>✅ Treinos editáveis no sistema</li>
-          <li>✅ Progresso e medidas</li>
-          <li>✅ Agenda e check-in</li>
-        </ul>
-        <a href="#planos" class="btn primary" style="width:100%; text-align:center;">Escolher plano</a>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="hero2__right">
+        <div class="card card--glow">
+          <h3>Comece hoje</h3>
+          <p class="muted">Selecione um plano e crie sua conta para acessar o portal.</p>
 
+          <div class="mini">
+            <div class="mini__item">✅ Check-in rápido</div>
+            <div class="mini__item">✅ Treinos editáveis</div>
+            <div class="mini__item">✅ Agenda de atividades</div>
+            <div class="mini__item">✅ Peso e evolução</div>
+          </div>
 
-<!-- SOBRE -->
-<section id="sobre" class="site-section">
-  <div class="container">
-    <h2>Sobre a Academia</h2>
-    <p class="muted">
-      O Physical Center é uma academia focada em resultados reais,
-      oferecendo estrutura moderna, profissionais qualificados
-      e um sistema exclusivo para acompanhamento do aluno.
-    </p>
-
-    <div class="features">
-      <div class="feature">
-        <div class="icon">🏋️</div>
-        <div>
-          <strong>Equipamentos modernos</strong>
-          <p class="muted tiny">Máquinas e pesos para treino completo.</p>
-        </div>
-      </div>
-    
-      <div class="feature">
-        <div class="icon">📊</div>
-        <div>
-          <strong>Acompanhamento digital</strong>
-          <p class="muted tiny">Evolução, medidas e histórico.</p>
-        </div>
-      </div>
-    
-      <div class="feature">
-        <div class="icon">💪</div>
-        <div>
-          <strong>Treinos personalizados</strong>
-          <p class="muted tiny">Planos ajustados ao seu objetivo.</p>
-        </div>
-      </div>
-    
-      <div class="feature">
-        <div class="icon">🕒</div>
-        <div>
-          <strong>Horários flexíveis</strong>
-          <p class="muted tiny">Rotina que cabe no seu dia.</p>
+          <button class="btn btn--primary w100" id="btnOpenPlans2">Ver planos</button>
+          <a class="btn w100" href="#planos">Ir para planos</a>
         </div>
       </div>
     </div>
-    
-</section>
+  </section>
 
-<!-- PLANOS -->
-<section id="planos" class="site-section alt">
-  <div class="container">
-    <h2>Planos</h2>
-
-    <div class="plans">
-      <div class="plan-card">
-        <h3>Mensal</h3>
-        <p class="price">R$ 129,90</p>
-        <p>Acesso total à academia + sistema</p>
-        <a href="app.html" class="btn primary">Contratar</a>
+  <section id="sobre" class="section2">
+    <div class="wrap">
+      <div class="section2__head">
+        <h2>Sobre a Physical Center</h2>
+        <p class="muted">Ambiente completo para iniciantes e avançados, com organização e acompanhamento.</p>
       </div>
 
-      <div class="plan-card highlight">
-        <h3>Trimestral</h3>
-        <p class="price">R$ 349,90</p>
-        <p>Economia + acompanhamento completo</p>
-        <a href="app.html" class="btn primary">Contratar</a>
-      </div>
-
-      <div class="plan-card">
-        <h3>Anual</h3>
-        <p class="price">R$ 999,90</p>
-        <p>Melhor custo-benefício</p>
-        <a href="app.html" class="btn primary">Contratar</a>
+      <div class="grid3">
+        <div class="tile">
+          <div class="tile__icon">🏋️</div>
+          <div>
+            <strong>Treinos bem montados</strong>
+            <p class="muted">Organização por grupos e objetivos.</p>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="tile__icon">📈</div>
+          <div>
+            <strong>Evolução visível</strong>
+            <p class="muted">Acompanhe peso e frequência.</p>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="tile__icon">🧑‍🏫</div>
+          <div>
+            <strong>Apoio profissional</strong>
+            <p class="muted">Orientação e segurança nos exercícios.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<section class="cta">
-  <div class="container">
-    <h2>Pronto para começar?</h2>
-    <p>Crie sua conta e tenha acesso ao sistema exclusivo do aluno.</p>
-    <a href="app.html" class="btn primary">Criar conta</a>
-  </div>
-</section>
+  <section id="estrutura" class="section2 section2--alt">
+    <div class="wrap">
+      <div class="section2__head">
+        <h2>Estrutura</h2>
+        <p class="muted">Uma experiência completa e confortável para treinar.</p>
+      </div>
 
-<!-- FOOTER -->
-<footer class="site-footer" id="contato">
-  <div class="container footer-grid">
+      <div class="grid4">
+        <div class="box">💨 Área cardio</div>
+        <div class="box">🏋️ Musculação</div>
+        <div class="box">🧼 Vestiários</div>
+        <div class="box">🥤 Suplementos</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="planos" class="section2">
+    <div class="wrap">
+      <div class="section2__head">
+        <h2>Planos</h2>
+        <p class="muted">Escolha o ideal — contratação simulada (sem pagamento real).</p>
+      </div>
+
+      <div class="plans2">
+        <div class="plan2">
+          <div class="plan2__top">
+            <strong>Mensal</strong>
+            <span class="muted">Flexível</span>
+          </div>
+          <div class="plan2__price">R$ 129,90</div>
+          <ul class="plan2__list">
+            <li>✔ Acesso total</li>
+            <li>✔ Portal do aluno</li>
+            <li>✔ Check-in + Treinos</li>
+          </ul>
+          <button class="btn btn--primary w100" data-pick-plan="Mensal|129.90">Contratar</button>
+        </div>
+
+        <div class="plan2 plan2--featured">
+          <div class="plan2__top">
+            <strong>Trimestral</strong>
+            <span class="muted">Mais escolhido</span>
+          </div>
+          <div class="plan2__price">R$ 349,90</div>
+          <ul class="plan2__list">
+            <li>✔ Tudo do Mensal</li>
+            <li>✔ Agenda e metas</li>
+            <li>✔ Suporte prioritário</li>
+          </ul>
+          <button class="btn btn--primary w100" data-pick-plan="Trimestral|349.90">Contratar</button>
+        </div>
+
+        <div class="plan2">
+          <div class="plan2__top">
+            <strong>Anual</strong>
+            <span class="muted">Melhor custo</span>
+          </div>
+          <div class="plan2__price">R$ 999,90</div>
+          <ul class="plan2__list">
+            <li>✔ Tudo do Trimestral</li>
+            <li>✔ Benefícios extras</li>
+            <li>✔ Foco em consistência</li>
+          </ul>
+          <button class="btn btn--primary w100" data-pick-plan="Anual|999.90">Contratar</button>
+        </div>
+      </div>
+
+      <div class="cta2">
+        <div>
+          <strong>Já decidiu?</strong>
+          <p class="muted">Crie sua conta na Área do Aluno para liberar o portal.</p>
+        </div>
+        <a class="btn btn--primary" href="app.html">Ir para a Área do Aluno</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contato" class="foot">
+  <div class="wrap foot__row">
     <div>
-      <strong>Physical Center</strong>
-      <p class="tiny muted">
-        © 2026 • Todos os direitos reservados
-      </p>
+      <strong>Academia Physical Center</strong>
+      <div class="muted small">© 2026 • Projeto Integrador | Modulo D</div>
     </div>
-    <div>
-      <p class="tiny muted">📍 Porto Alegre - RS</p>
-      <p class="tiny muted">📞 (51) 00000-0000</p>
-      <p class="tiny muted">📧 contato@physicalcenter.com</p>
+    <div class="muted small">
+      <div>📍 Porto Alegre - RS</div>
+      <div>📞 (51) 9 9999-9999</div>
+      <div>✉️ contato@physicalcenter.com</div>
     </div>
   </div>
 </footer>
 
+<div class="modal hidden" id="planModal" aria-hidden="true">
+  <div class="modal__backdrop" id="modalBackdrop" aria-label="Fechar"></div>
+
+  <div class="modal__card" role="dialog" aria-modal="true" aria-label="Contratar plano">
+    <div class="modal__head">
+      <strong>Contratar plano</strong>
+      <button class="iconbtn" id="modalClose" aria-label="Fechar">✕</button>
+    </div>
+
+    <p class="muted" style="margin-top:10px;">
+      Selecione um plano. Você será direcionado para entrar ou cadastrar.
+    </p>
+
+    <div class="modal__grid">
+      <button class="select" data-pick-plan="Mensal|129.90">
+        <strong>Mensal</strong><span>R$ 129,90</span>
+      </button>
+      <button class="select" data-pick-plan="Trimestral|349.90">
+        <strong>Trimestral</strong><span>R$ 349,90</span>
+      </button>
+      <button class="select" data-pick-plan="Anual|999.90">
+        <strong>Anual</strong><span>R$ 999,90</span>
+      </button>
+    </div>
+
+    <div class="modal__foot">
+      <span class="muted small">* Simulação local. Sem cobrança real.</span>
+      <a class="btn btn--primary" href="app.html#plan">Continuar</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  
+  const planModal = document.getElementById("planModal");
+  const btnOpenPlans = document.getElementById("btnOpenPlans");
+  const btnOpenPlans2 = document.getElementById("btnOpenPlans2");
+  const modalClose = document.getElementById("modalClose");
+  const modalBackdrop = document.getElementById("modalBackdrop");
+
+  function openPlanModal(){
+    planModal.classList.remove("hidden");
+    planModal.setAttribute("aria-hidden", "false");
+  }
+
+  function closePlanModal(){
+    planModal.classList.add("hidden");
+    planModal.setAttribute("aria-hidden", "true");
+  }
+
+  function pickPlan(payload){
+    localStorage.setItem("pc_selected_plan", payload); // "Mensal|129.90"
+  }
+
+  btnOpenPlans.addEventListener("click", openPlanModal);
+  btnOpenPlans2.addEventListener("click", openPlanModal);
+  modalClose.addEventListener("click", closePlanModal);
+  modalBackdrop.addEventListener("click", closePlanModal);
+
+  window.addEventListener("keydown", (e)=>{
+    if(e.key === "Escape" && !planModal.classList.contains("hidden")) closePlanModal();
+  });
+
+  document.querySelectorAll("[data-pick-plan]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      pickPlan(btn.getAttribute("data-pick-plan"));
+      window.location.href = "app.html#plan";
+    });
+  });
+</script>
+
 </body>
 </html>
+
